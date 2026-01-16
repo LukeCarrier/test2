@@ -23,7 +23,8 @@ jobs:
       - name: Print resolved reference
         env:
           RESOLVED_REF: ${{ steps.resolve_ref.outputs.ref }}
-        run: echo "Resolved reference: $RESOLVED_REF"
+        run: |
+          echo "Resolved reference: $RESOLVED_REF"
 
   via-reusable:
     uses: LukeCarrier/test/.github/workflows/dump-context-reusable.yml@main
