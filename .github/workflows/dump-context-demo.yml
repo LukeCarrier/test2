@@ -1,0 +1,20 @@
+name: Dump Context Demo
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  direct-composite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Dump context using composite action directly
+        uses: LukeCarrier/test/.github/actions/dump-context@main
+
+  via-reusable:
+    uses: LukeCarrier/test/.github/workflows/dump-context-reusable.yml@main
