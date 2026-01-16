@@ -14,7 +14,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Dump context using composite action directly
-        uses: LukeCarrier/test/.github/actions/dump-context@d13c73a551ea8512abc527751d7160d956761777
+        uses: LukeCarrier/test/.github/actions/dump-context@main
+
+      - name: Resolve reference
+        id: resolve_ref
+        uses: LukeCarrier/test/.github/actions/resolve-composite-action-ref@main
+
+      - name: Print resolved reference
+        env:
+          RESOLVED_REF: ${{ steps.resolve_ref.outputs.ref }}
+        run: echo "Resolved reference: $RESOLVED_REF"
 
   via-reusable:
-    uses: LukeCarrier/test/.github/workflows/dump-context-reusable.yml@d13c73a551ea8512abc527751d7160d956761777
+    uses: LukeCarrier/test/.github/workflows/dump-context-reusable.yml@main
